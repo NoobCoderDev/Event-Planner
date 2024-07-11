@@ -17,14 +17,16 @@ export const signIn = async(request,response,next)=>{
         return response.status(500).json({error: "Internal Server Error"});
     }
 }
+
 export const signUp = async(request,response,next)=>{
    try{
       const errors =  validationResult(request);
       if(!errors.isEmpty())
         return response.status(401).json({error: "Bad request"});
 
-      let {username,email,password} = request.body;  
-      let admin = await Admin.create({username,email,password});
+      let {firstname,lastname,email,password} = request.body;  
+      console.log(firstname,lastname,email,password);
+      let admin = await Admin.create({firstname,lastname,email,password});
       return response.status(201).json({message: 'Admin saved',admin}); 
    }
    catch(err){

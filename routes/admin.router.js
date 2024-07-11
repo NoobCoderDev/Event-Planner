@@ -4,7 +4,8 @@ import { body } from "express-validator";
 const router = express.Router();
 
 router.post("/signup",
-body("username","username is required").notEmpty(),
+body("firstname","firstname is required").notEmpty(),
+body("lastname","lastname is required").notEmpty(),
 body("email","email id is required").notEmpty(),
 body("email","email id is incorrect").isEmail(),
 body("password","password is required").notEmpty(),

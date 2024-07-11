@@ -8,7 +8,11 @@ const Admin = sequelize.define("admins",{
     primaryKey: true,
     autoIncrement: true
    },
-   username:{
+   firstname:{
+    type: DataTypes.STRING,
+    allowNull: false
+   },
+   lastname:{
     type: DataTypes.STRING,
     allowNull: false
    },

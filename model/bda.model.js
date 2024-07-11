@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../db/dbConfig.js";
 import bcrypt from "bcryptjs";
 
-const BDA = sequelize.define("BDA",{
+const BDA = sequelize.define("bda",{
    id:{
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -46,7 +46,7 @@ BDA.checkPassword = (password,encryptedPassword)=>{
    return bcrypt.compareSync(password,encryptedPassword);
 }
 export default BDA;
-h
+
 /*
   Sequelize model define the structure of table
   It is blueprint of database table

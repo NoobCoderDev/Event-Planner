@@ -4,11 +4,11 @@ import { body } from "express-validator";
 const router = express.Router();
 
 router.post("/signup",
-body("username","username is required").notEmpty(),
+body("firstname","firstname is required").notEmpty(),
+body("lastname","lastname is required").notEmpty(),
 body("email","email id is required").notEmpty(),
 body("email","email id is incorrect").isEmail(),
-body("password","password is required").notEmpty(),
-body("password","password must have at least 4 letter").isLength({min:4}),signUp);
+body("phone","phone is required").notEmpty(),signUp);
 
 router.post("/signin",signIn);
 

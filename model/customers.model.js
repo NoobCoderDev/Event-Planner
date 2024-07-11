@@ -7,16 +7,16 @@ const customer = sequelize.define("customers",{
         primaryKey:true,
         autoIncrement:true
     },
-    first_name:{
+    firstname:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    last_name:{
+    lastname:{
         type:DataTypes.STRING,
         allowNull:false
     },
     phone:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull:false
     },
     email:{
@@ -35,6 +35,11 @@ const customer = sequelize.define("customers",{
     description:{
         type:DataTypes.STRING,
         allowNull:false
+    },
+    status:{
+        type:DataTypes.STRING,
+        allowNull:false,
+        defaultValue: "new customer"
     }
 
 });

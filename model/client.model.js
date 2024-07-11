@@ -22,10 +22,10 @@ const Client = sequelize.define("clients",{
     unique: true
    },
    phone:{
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true
-   },
+   }
 });
 sequelize.sync()
 .then(result=>{
