@@ -4,11 +4,11 @@ import Event from "../model/events.model.js";
 
 export const addEvent = async(request,response,next)=>{
     try{
-        // const errors = validationResult(request);
-        // if(!errors.isEmpty()){
-        //     console.log(errors);
-        //    return response.status(401).json({error:"Bad request",errorMessage: errors.array()});
-        // }
+        const errors = validationResult(request);
+        if(!errors.isEmpty()){
+            console.log(errors);
+           return response.status(401).json({error:"Bad request",errorMessage: errors.array()});
+        }
         let {eventName,startDate,endDate,budget,place,bda_Id,status,clientId,BdaId}= request.body;
         console.log(eventName,startDate,endDate,budget,place,bda_Id,status,clientId,BdaId);
         let addevent = await Event.create({eventName,startDate,endDate,budget,place,bda_Id,status,clientId,BdaId});

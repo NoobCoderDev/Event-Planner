@@ -1,6 +1,9 @@
 import Event from "./events.model.js";
 import Client from "./client.model.js";
 import Bda from "./bda.model.js";
+import Address from "./address.model.js";
+import Vendor from "./vendors.model.js";
+import Customer from "./customers.model.js";
 
 // Event.hasOne(Bda); // foreignKey(userId) // Aisa likhne se Bda table me eventId create ho jayega
 // Bda.belongsTo(Event);// references User(id)
@@ -16,5 +19,16 @@ Event.belongsTo(Bda,{
     foreignKey: "BdaId", targetKey:"id"
 });
 
+Vendor.hasMany(Address);
+Address.belongsTo(Vendor);
 
-export {Event,Bda};
+Client.hasMany(Address);
+Address.belongsTo(Client);
+
+Bda.hasMany(Address);
+Address.belongsTo(Bda);
+
+Customer.hasMany(Address);
+Address.belongsTo(Customer);
+
+export {Event,Bda,Customer,Vendor,Client};
