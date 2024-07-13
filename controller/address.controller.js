@@ -43,12 +43,15 @@ export const fetchAddress = async(request,response,next)=>{
          else
             return response.status(404).json({error:"Address not found."});
       }
-      if(vendorId){
+      else if(vendorId){
          let address = await Address.findOne({where:{vendorId},raw:true});
          if(address)
             return response.status(201).json({message: 'Address Fetched',address}); 
          else
             return response.status(404).json({error:"Address not found."});
+      }
+      else{
+         response.status(401).json({message:"Bad request."});
       }
    }
    catch(err){
