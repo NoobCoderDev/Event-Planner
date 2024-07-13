@@ -24,9 +24,9 @@ export const signUp = async(request,response,next)=>{
       if(!errors.isEmpty())
         return response.status(401).json({error: "Bad request"});
 
-      let {firstname,lastname,email,phone,password,category} = request.body;  
-      console.log(firstname,lastname,email,phone,password,category);
-      let vendor = await Vendor.create({firstname,lastname,email,phone,password,category});
+      let {firstname,lastname,email,phone,password,department} = request.body;  
+      console.log(firstname,lastname,email,phone,password,department);
+      let vendor = await Vendor.create({firstname,lastname,email,phone,password,department});
       return response.status(201).json({message: 'Vendor saved',vendor}); 
    }
    catch(err){

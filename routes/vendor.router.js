@@ -11,7 +11,7 @@ body("email","email id is incorrect").isEmail(),
 body("phone","phone is required").notEmpty(),
 body("password","password is required").notEmpty(),
 body("password","password must have at least 4 letter").isLength({min:4}),
-body("category","category is required").notEmpty(),
+body("department","department is required").notEmpty(),
 signUp);
 
 router.post("/signin",signIn);

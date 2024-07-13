@@ -34,7 +34,7 @@ const Vendor = sequelize.define("vendors",{
       this.setDataValue("password",encryptedPassword);
     }
    },
-   category:{
+   department:{
     type:DataTypes.STRING,
     allowNull:false
    }
