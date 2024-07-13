@@ -4,6 +4,7 @@ import Bda from "./bda.model.js";
 import Address from "./address.model.js";
 import Vendor from "./vendors.model.js";
 import Customer from "./customers.model.js";
+import AdminAssignCTB from "./adminAssignCTB.model.js";
 
 // Event.hasOne(Bda); // foreignKey(userId) // Aisa likhne se Bda table me eventId create ho jayega
 // Bda.belongsTo(Event);// references User(id)
@@ -31,4 +32,10 @@ Address.belongsTo(Bda);
 Customer.hasMany(Address);
 Address.belongsTo(Customer);
 
-export {Event,Bda,Customer,Vendor,Client};
+Bda.hasMany(AdminAssignCTB);
+AdminAssignCTB.belongsTo(Bda);
+
+Client.hasOne(AdminAssignCTB);
+AdminAssignCTB.belongsTo(Client);
+
+export {Event,Bda,Customer,Vendor,Client,AdminAssignCTB};

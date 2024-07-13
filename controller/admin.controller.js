@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 import Admin from "../model/admin.model.js";
+import BDA from "../model/bda.model.js";
 
 export const signIn = async(request,response,next)=>{
     const errors = validationResult(request);
@@ -28,6 +29,30 @@ export const signUp = async(request,response,next)=>{
       console.log(firstname,lastname,email,password);
       let admin = await Admin.create({firstname,lastname,email,password});
       return response.status(201).json({message: 'Admin saved',admin}); 
+   }
+   catch(err){
+      console.log(err);
+      return response.status(500).json({error: "Internal Server Error"});
+   }
+}
+
+export const getBdaDataById = async (request,response,next)=>{
+   try{
+      let {id} = request.params;  
+      console.log(id);
+      let bda = await BDA.findOne({where:{id},raw:true});
+      return response.status(201).json({message: 'Fetch data successfully.',bda}); 
+   }
+   catch(err){
+      console.log(err);
+      return response.status(500).json({error: "Internal Server Error"});
+   }
+}
+
+export const getAllBdaData = async (request,response,next)=>{
+   try{
+      let bda = await BDA.findAll({raw:true});
+      return response.status(201).json({message: 'Fetch data successfully.',bda}); 
    }
    catch(err){
       console.log(err);
